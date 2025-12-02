@@ -95,8 +95,8 @@ function renderInputs() {
     const bobsContainer = document.getElementById("bobsContainer");
     const thetaContainer = document.getElementById("thetaContainer");
     const omegaContainer = document.getElementById("omegaContainer");
-
     const linkCountInput = document.getElementById("linkCountInput");
+
     if (linkCountInput) {
         updatingInputs = true;
         linkCountInput.value = linkCount;
@@ -110,6 +110,8 @@ function renderInputs() {
 
     for (let i = 0; i < linkCount; i++) {
         const linkIdx = i + 1;
+
+        // Length Li (m)
         linkContainer.appendChild(
             createNumberInput(
                 `L${linkIdx}`,
@@ -118,37 +120,47 @@ function renderInputs() {
                 "0.01",
             ),
         );
+
+        // ★ Rod mass -> 英文
         linkContainer.appendChild(
             createNumberInput(
                 `rodMass${linkIdx}`,
-                `杆质量 ${linkIdx} (kg)`,
+                `Rod mass ${linkIdx} (kg)`,
                 currentConfig.rodMass[i] ?? 1,
                 "0.01",
             ),
         );
 
+        // ★ Bob mass -> 英文
         bobsContainer.appendChild(
             createNumberInput(
                 `bobMass${linkIdx}`,
-                `小球质量 ${linkIdx} (kg)`,
+                `Bob mass ${linkIdx} (kg)`,
                 currentConfig.bobMass[i] ?? 0.25,
                 "0.01",
             ),
         );
 
+        // Angle θi
         thetaContainer.appendChild(
             createNumberInput(
                 `theta${linkIdx}`,
                 `θ${linkIdx}`,
-                currentConfig.theta[i] !== undefined ? radToDeg(currentConfig.theta[i]).toFixed(1) : 120,
+                currentConfig.theta[i] !== undefined
+                    ? radToDeg(currentConfig.theta[i]).toFixed(1)
+                    : 120,
                 "0.1",
             ),
         );
+
+        // Angular velocity ωi
         omegaContainer.appendChild(
             createNumberInput(
                 `omega${linkIdx}`,
                 `ω${linkIdx}`,
-                currentConfig.omega[i] !== undefined ? radToDeg(currentConfig.omega[i]).toFixed(1) : 0,
+                currentConfig.omega[i] !== undefined
+                    ? radToDeg(currentConfig.omega[i]).toFixed(1)
+                    : 0,
                 "0.1",
             ),
         );
