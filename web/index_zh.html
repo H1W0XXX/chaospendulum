@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <title>混沌摆模拟器 – 多杆混沌系统实时演示</title>
+    <meta name="description" content="一个基于 WebAssembly 的多杆混沌摆模拟器。可调整杆长、质量、初始角度等参数，实时观察混沌动力学行为。">
+    <meta name="keywords" content="混沌摆, 混沌系统, 物理模拟, 多杆摆, 双摆, WASM 演示, 混沌动力学">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="wasm_exec.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="brand">混沌摆</div>
+    <div class="spacer"></div>
+
+    <!-- 语言切换 -->
+    <a class="top-btn" href="index.html">English</a>
+</div>
+
+<div class="layout">
+    <div class="left-panel">
+
+        <div class="panel-block">
+            <div class="button-row">
+                <button id="btnPlayPause">暂停</button>
+                <button id="btnRandom">随机化！</button>
+            </div>
+        </div>
+
+        <div class="panel-block">
+            <h3>显示</h3>
+            <label class="checkbox-row"><input type="checkbox" id="toggleTrails" checked> 显示轨迹</label>
+            <label class="checkbox-row"><input type="checkbox" id="toggleArrows" checked> 显示箭头</label>
+        </div>
+
+        <div class="panel-block">
+            <div class="block-header">
+                <h3>杆（Links）</h3>
+                <span class="muted">长度 / 杆质量</span>
+            </div>
+            <div class="link-count-row">
+                <label>数量 <input id="linkCountInput" type="number" min="1" max="8" value="2"></label>
+            </div>
+            <div id="linksContainer" class="input-grid"></div>
+        </div>
+
+        <div class="panel-block">
+            <div class="block-header">
+                <h3>球（Balls）</h3>
+                <span class="muted">质量</span>
+            </div>
+            <div id="bobsContainer" class="input-grid"></div>
+        </div>
+
+        <div class="panel-block">
+            <h3>初始角度（度）</h3>
+            <div id="thetaContainer" class="input-grid"></div>
+        </div>
+
+        <div class="panel-block">
+            <h3>初始角速度（度/秒）</h3>
+            <div id="omegaContainer" class="input-grid"></div>
+        </div>
+
+    </div>
+
+    <canvas id="pendulumCanvas"></canvas>
+</div>
+
+</body>
+</html>

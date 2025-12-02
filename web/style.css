@@ -1,0 +1,193 @@
+:root {
+    --bg-color: #050608;
+    --panel-bg: rgba(20, 20, 20, 0.9);
+    --panel-border: #333;
+    --accent: #2a6fff;
+    --text-main: #f5f5f5;
+    --text-muted: #aaa;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow: hidden;
+}
+
+/* 顶部小条 */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10;
+}
+
+.top-bar .brand {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.top-bar .spacer {
+    flex: 1;
+}
+
+.top-btn {
+    background: #3baf2a;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* 左侧控制面板 + 右侧大画布 */
+.layout {
+    position: fixed;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+}
+
+.left-panel {
+    flex: 0 0 320px;
+    min-width: 320px;
+    padding: 16px;
+    background: var(--panel-bg);
+    border-right: 1px solid var(--panel-border);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 5;
+    overflow-y: auto;
+}
+
+.panel-block {
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    padding: 10px 10px 12px;
+}
+
+.panel-block h3 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.panel-block button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 6px 0;
+    font-size: 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent);
+    color: white;
+}
+
+.button-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+#btnRandom {
+    background: #ffffff;
+    color: #000000;
+}
+
+.block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.block-header .muted {
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.input-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px;
+    border-radius: 6px;
+    background: #0b0d10;
+    border: 1px solid #1e1e1e;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.input-grid input {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #2f2f2f;
+    background: #15171c;
+    color: var(--text-main);
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    padding: 4px 0;
+    color: var(--text-main);
+}
+
+.checkbox-row input {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--accent);
+}
+
+.link-count-row {
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: var(--text-main);
+}
+
+.link-count-row input {
+    margin-left: 8px;
+    width: 64px;
+    padding: 6px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #2f2f2f;
+    background: #15171c;
+    color: var(--text-main);
+}
+
+/* 右侧画布占满剩余空间 */
+#pendulumCanvas {
+    flex: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Chaos Pendulum Simulator – Interactive Multi-Link Pendulum</title>
+    <meta name="description" content="An interactive multi-link chaotic pendulum simulator powered by WebAssembly. Adjust link lengths, masses, initial angles, and visualize chaotic motion.">
+    <meta name="keywords" content="chaos pendulum, chaotic motion, physics simulation, multi-link pendulum, wasm demo, double pendulum">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="wasm_exec.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="brand">Chaotic Pendulum</div>
+    <div class="spacer"></div>
+
+    <!-- Language switch -->
+    <a class="top-btn" href="index_zh.html">中文</a>
+</div>
+
+<div class="layout">
+    <div class="left-panel">
+
+        <div class="panel-block">
+            <div class="button-row">
+                <button id="btnPlayPause">Pause</button>
+                <button id="btnRandom">Randomize!</button>
+            </div>
+        </div>
+
+        <div class="panel-block">
+            <h3>Display</h3>
+            <label class="checkbox-row"><input type="checkbox" id="toggleTrails" checked> Show Trails</label>
+            <label class="checkbox-row"><input type="checkbox" id="toggleArrows" checked> Show Arrows</label>
+        </div>
+
+        <div class="panel-block">
+            <div class="block-header">
+                <h3>Links</h3>
+                <span class="muted">Length / rod mass</span>
+            </div>
+            <div class="link-count-row">
+                <label>Count <input id="linkCountInput" type="number" min="1" max="8" value="2"></label>
+            </div>
+            <div id="linksContainer" class="input-grid"></div>
+        </div>
+
+        <div class="panel-block">
+            <div class="block-header">
+                <h3>Balls</h3>
+                <span class="muted">Mass</span>
+            </div>
+            <div id="bobsContainer" class="input-grid"></div>
+        </div>
+
+        <div class="panel-block">
+            <h3>Initial angles (deg)</h3>
+            <div id="thetaContainer" class="input-grid"></div>
+        </div>
+
+        <div class="panel-block">
+            <h3>Initial angular velocity (deg/s)</h3>
+            <div id="omegaContainer" class="input-grid"></div>
+        </div>
+
+    </div>
+
+    <canvas id="pendulumCanvas"></canvas>
+</div>
+
+</body>
+</html>
